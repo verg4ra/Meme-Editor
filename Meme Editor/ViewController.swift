@@ -16,8 +16,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var navbar: UINavigationBar!
+    
     let topDefaultText = "TOP"
     let bottomDefaultText = "BOTTOM"
+    
+    var meme: Meme!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,7 +75,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func launchActivityView() {
-        let activityView = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        let activityView = UIActivityViewController(activityItems: [self.generateMemedImage()], applicationActivities: nil)
+        activityView.completionWithItemsHandler = { void in
+            self.save();
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
         self.presentViewController(activityView, animated: true, completion: nil)
     }
     
@@ -110,6 +119,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Hide toolbar and navbar
+        toolbar.hidden = true
+        navbar.hidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // Show toolbar and navbar
+        toolbar.hidden = false
+        navbar.hidden = false
+        
+        return memedImage
+    }
+    
+    func save() {
+        self.meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: self.generateMemedImage())
     }
     
 }
