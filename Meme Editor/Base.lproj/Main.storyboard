@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4N4-ar-D2h"/>
-                                    <barButtonItem title="Camera" id="TfK-2z-5sE">
+                                    <barButtonItem systemItem="camera" id="TfK-2z-5sE">
                                         <connections>
                                             <action selector="displayCamera" destination="BYZ-38-t0r" id="447-5C-Iaw"/>
                                         </connections>
@@ -44,6 +44,9 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="TfK-2z-5sE" id="kgO-gk-6yR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

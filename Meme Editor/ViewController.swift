@@ -9,6 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+    }
 
     @IBAction func displayImagePicker() {
         let pickerController = UIImagePickerController()
