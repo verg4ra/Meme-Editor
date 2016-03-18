@@ -23,7 +23,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4N4-ar-D2h"/>
                                     <barButtonItem title="Camera" id="TfK-2z-5sE"/>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="i8t-ry-nvg"/>
-                                    <barButtonItem title="Album" id="bOx-QP-Eeb"/>
+                                    <barButtonItem title="Album" id="bOx-QP-Eeb">
+                                        <connections>
+                                            <action selector="displayImagePicker" destination="BYZ-38-t0r" id="eFS-mT-ow9"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zn-ji-wXi"/>
                                 </items>
                             </toolbar>
