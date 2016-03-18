@@ -35,6 +35,12 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zn-ji-wXi"/>
                                 </items>
                             </toolbar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-bC-otg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="cNN-J2-u98"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -43,6 +49,7 @@
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Un6-5R-s3J"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="TfK-2z-5sE" id="kgO-gk-6yR"/>

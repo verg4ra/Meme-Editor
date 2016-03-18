@@ -16,6 +16,10 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     @IBAction func displayImagePicker() {
         let pickerController = UIImagePickerController()
