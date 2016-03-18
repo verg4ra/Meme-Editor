@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,14 +23,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func displayImagePicker() {
-        let pickerController = UIImagePickerController()
-        self.presentViewController(pickerController, animated: true, completion: nil)
+        self.presentImagePickerControler(delegate: self, sourceType: .PhotoLibrary)
     }
     
     @IBAction func displayCamera() {
+        self.presentImagePickerControler(delegate: self, sourceType: .Camera)
+    }
+    
+    func presentImagePickerControler(delegate delegate: protocol <UIImagePickerControllerDelegate, UINavigationControllerDelegate>, sourceType: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
-        pickerController.sourceType = .Camera
+        pickerController.delegate = delegate
+        pickerController.sourceType = sourceType
         self.presentViewController(pickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.image = image
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func launchActivityView() {

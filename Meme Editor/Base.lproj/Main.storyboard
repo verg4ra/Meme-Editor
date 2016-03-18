@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aKX-t4-avg">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-PB-ApI">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
@@ -49,9 +52,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gdG-bC-otg" firstAttribute="leading" secondItem="ayj-PB-ApI" secondAttribute="leading" id="05F-NO-iQK"/>
+                            <constraint firstItem="aKX-t4-avg" firstAttribute="leading" secondItem="gdG-bC-otg" secondAttribute="leading" id="3QZ-DO-evd"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="6vm-T2-52T"/>
+                            <constraint firstItem="aKX-t4-avg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="7LV-iC-F0Y"/>
                             <constraint firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="ArH-cB-8cm"/>
+                            <constraint firstItem="aKX-t4-avg" firstAttribute="top" secondItem="gdG-bC-otg" secondAttribute="top" id="Mhu-iq-bS2"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Un6-5R-s3J"/>
+                            <constraint firstItem="aKX-t4-avg" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="hiG-Tv-66A"/>
                             <constraint firstItem="gdG-bC-otg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kCn-i3-cAg"/>
                             <constraint firstItem="gdG-bC-otg" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="phF-zo-Yzi"/>
                         </constraints>
@@ -60,10 +67,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="cameraButton" destination="TfK-2z-5sE" id="kgO-gk-6yR"/>
+                        <outlet property="imageView" destination="aKX-t4-avg" id="iAk-6f-taE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="565" y="490"/>
         </scene>
     </scenes>
 </document>
