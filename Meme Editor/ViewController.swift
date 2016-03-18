@@ -21,6 +21,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.subscribeToNotifications()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         
         self.setTextAttributesFor(topTextField)
@@ -28,6 +30,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         topTextField.text = topDefaultText
         bottomTextField.text = bottomDefaultText
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -75,6 +83,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         ]
         textField.defaultTextAttributes = textAttributes
         textField.textAlignment = .Center
+    }
+    
+    func subscribeToNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize = userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue {
+                return keyboardSize.CGRectValue().height
+            }
+        }
+        return 0
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0 && bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        } else {
+            self.view.frame.origin.y = 0
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
     
 }
