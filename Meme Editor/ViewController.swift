@@ -31,5 +31,10 @@ class ViewController: UIViewController {
         pickerController.sourceType = .Camera
         self.presentViewController(pickerController, animated: true, completion: nil)
     }
+    
+    @IBAction func launchActivityView() {
+        let activityView = UIActivityViewController(activityItems: [], applicationActivities: nil)
+        self.presentViewController(activityView, animated: true, completion: nil)
+    }
 }
 

@@ -35,18 +35,25 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zn-ji-wXi"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-bC-otg">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-bC-otg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="cNN-J2-u98"/>
+                                    <barButtonItem systemItem="action" id="cNN-J2-u98">
+                                        <connections>
+                                            <action selector="launchActivityView" destination="BYZ-38-t0r" id="zjt-sX-qbG"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gdG-bC-otg" firstAttribute="leading" secondItem="ayj-PB-ApI" secondAttribute="leading" id="05F-NO-iQK"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="6vm-T2-52T"/>
                             <constraint firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="ArH-cB-8cm"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Un6-5R-s3J"/>
+                            <constraint firstItem="gdG-bC-otg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kCn-i3-cAg"/>
+                            <constraint firstItem="gdG-bC-otg" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="phF-zo-Yzi"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
