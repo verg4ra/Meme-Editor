@@ -10,20 +10,29 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    // Buttons
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    
+    // Image
     @IBOutlet weak var imageView: UIImageView!
     
+    // Text Fields
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+    // Tool and Nav Bars
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var navbar: UINavigationBar!
     
-    let topDefaultText = "TOP"
-    let bottomDefaultText = "BOTTOM"
+    // Properties
+    let defaultTextTop = "TOP"
+    let defaultTextBottom = "BOTTOM"
     
     var meme: Meme!
+    
+    
+    // Override Methods
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,8 +45,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.setTextAttributesFor(topTextField)
         self.setTextAttributesFor(bottomTextField)
         
-        topTextField.text = topDefaultText
-        bottomTextField.text = bottomDefaultText
+        topTextField.text = defaultTextTop
+        bottomTextField.text = defaultTextBottom
         
     }
     
@@ -51,6 +60,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
+    
+    // Text Field Functions
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -63,17 +75,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func clearDefaultText(textField: UITextField) {
         switch textField {
         case topTextField:
-            if textField.text == topDefaultText {
+            if textField.text == defaultTextTop {
                 textField.text = ""
             }
         case bottomTextField:
-            if textField.text == bottomDefaultText {
+            if textField.text == defaultTextBottom {
                 textField.text = ""
             }
         default:
             break
         }
     }
+    
+    
+    // Present Album or Camera
 
     @IBAction func displayImagePicker() {
         self.presentImagePickerControler(delegate: self, sourceType: .PhotoLibrary)
@@ -97,6 +112,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    // Launch Activity View Controller
+    
     @IBAction func launchActivityView() {
         let activityView = UIActivityViewController(activityItems: [self.generateMemedImage()], applicationActivities: nil)
         activityView.completionWithItemsHandler = { void in
@@ -105,6 +123,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         self.presentViewController(activityView, animated: true, completion: nil)
     }
+    
+    
+    // Text Attributes
     
     func setTextAttributesFor(textField: UITextField) {
         let textAttributes: [String: AnyObject] = [
@@ -116,6 +137,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.defaultTextAttributes = textAttributes
         textField.textAlignment = .Center
     }
+    
+    
+    // Keyboard Notificatinos
     
     func subscribeToNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
@@ -143,6 +167,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
+    
+    
+    // Create Meme
     
     func generateMemedImage() -> UIImage {
         
