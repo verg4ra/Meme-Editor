@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var topTextField: UITextField!
@@ -28,13 +29,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         self.subscribeToNotifications()
+        
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
+        shareButton.enabled = imageView.image != nil
         
         self.setTextAttributesFor(topTextField)
         self.setTextAttributesFor(bottomTextField)
         
         topTextField.text = topDefaultText
         bottomTextField.text = bottomDefaultText
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -50,6 +54,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.clearDefaultText(textField)
+    }
+    
+    func clearDefaultText(textField: UITextField) {
+        switch textField {
+        case topTextField:
+            if textField.text == topDefaultText {
+                textField.text = ""
+            }
+        case bottomTextField:
+            if textField.text == bottomDefaultText {
+                textField.text = ""
+            }
+        default:
+            break
+        }
     }
 
     @IBAction func displayImagePicker() {

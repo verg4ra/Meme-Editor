@@ -101,6 +101,7 @@
                         <outlet property="cameraButton" destination="TfK-2z-5sE" id="kgO-gk-6yR"/>
                         <outlet property="imageView" destination="aKX-t4-avg" id="iAk-6f-taE"/>
                         <outlet property="navbar" destination="Boi-T4-1T7" id="AZc-ao-TUZ"/>
+                        <outlet property="shareButton" destination="cNN-J2-u98" id="pKr-PF-Gjk"/>
                         <outlet property="toolbar" destination="ayj-PB-ApI" id="LJy-Uk-a2h"/>
                         <outlet property="topTextField" destination="6hs-qR-Ixz" id="Oy8-5h-0Hw"/>
                     </connections>
