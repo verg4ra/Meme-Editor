@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // Buttons
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -37,13 +37,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.subscribeToNotifications()
+        subscribeToNotifications()
         
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(.Camera)
         shareButton.enabled = imageView.image != nil
         
-        self.setTextAttributesFor(topTextField)
-        self.setTextAttributesFor(bottomTextField)
+        setTextAttributesFor(topTextField)
+        setTextAttributesFor(bottomTextField)
         
         topTextField.text = defaultTextTop
         bottomTextField.text = defaultTextBottom
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        self.clearDefaultText(textField)
+        clearDefaultText(textField)
     }
     
     func clearDefaultText(textField: UITextField) {
@@ -91,37 +91,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Present Album or Camera
 
     @IBAction func displayImagePicker() {
-        self.presentImagePickerControler(delegate: self, sourceType: .PhotoLibrary)
+        presentImagePickerControler(delegate: self, sourceType: .PhotoLibrary)
     }
     
     @IBAction func displayCamera() {
-        self.presentImagePickerControler(delegate: self, sourceType: .Camera)
+        presentImagePickerControler(delegate: self, sourceType: .Camera)
     }
     
     func presentImagePickerControler(delegate delegate: protocol <UIImagePickerControllerDelegate, UINavigationControllerDelegate>, sourceType: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = delegate
         pickerController.sourceType = sourceType
-        self.presentViewController(pickerController, animated: true, completion: nil)
+        presentViewController(pickerController, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
+            imageView.contentMode = .ScaleAspectFit
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
     // Launch Activity View Controller
     
     @IBAction func launchActivityView() {
-        let activityView = UIActivityViewController(activityItems: [self.generateMemedImage()], applicationActivities: nil)
+        let activityView = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         activityView.completionWithItemsHandler = { void in
             self.save();
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-        self.presentViewController(activityView, animated: true, completion: nil)
+        presentViewController(activityView, animated: true, completion: nil)
     }
     
     
@@ -156,16 +157,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func keyboardWillShow(notification: NSNotification) {
-        if self.view.frame.origin.y == 0 && bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder() {
+            view.frame.origin.y -= getKeyboardHeight(notification)
         } else {
-            self.view.frame.origin.y = 0
+            view.frame.origin.y = 0
         }
         
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+        view.frame.origin.y = 0
     }
     
     
@@ -178,8 +179,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         navbar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame,
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
@@ -193,7 +194,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func save() {
-        self.meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: self.generateMemedImage())
+        meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
     }
     
 }
