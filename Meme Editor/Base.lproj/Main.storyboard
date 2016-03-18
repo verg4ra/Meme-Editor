@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -38,36 +39,68 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zn-ji-wXi"/>
                                 </items>
                             </toolbar>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdG-bC-otg">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hs-qR-Ixz">
+                                <rect key="frame" x="20" y="82" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WTH-fy-y9o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="44"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="OLT-bn-ALn"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AJp-Go-2bK">
+                                <rect key="frame" x="20" y="442" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="51i-PT-5N7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="44"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="f82-E2-EY8"/>
+                                </connections>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Boi-T4-1T7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="action" id="cNN-J2-u98">
-                                        <connections>
-                                            <action selector="launchActivityView" destination="BYZ-38-t0r" id="zjt-sX-qbG"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <navigationItem title="Meme Editor" id="eCF-m6-LE9">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="cNN-J2-u98">
+                                            <connections>
+                                                <action selector="launchActivityView" destination="BYZ-38-t0r" id="zjt-sX-qbG"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
-                            </toolbar>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="gdG-bC-otg" firstAttribute="leading" secondItem="ayj-PB-ApI" secondAttribute="leading" id="05F-NO-iQK"/>
-                            <constraint firstItem="aKX-t4-avg" firstAttribute="leading" secondItem="gdG-bC-otg" secondAttribute="leading" id="3QZ-DO-evd"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="6vm-T2-52T"/>
                             <constraint firstItem="aKX-t4-avg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="7LV-iC-F0Y"/>
                             <constraint firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="ArH-cB-8cm"/>
-                            <constraint firstItem="aKX-t4-avg" firstAttribute="top" secondItem="gdG-bC-otg" secondAttribute="top" id="Mhu-iq-bS2"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AyC-j8-Nvj"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="leading" secondItem="aKX-t4-avg" secondAttribute="leading" id="C9C-Hu-iyI"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="leading" secondItem="ayj-PB-ApI" secondAttribute="leading" id="Tij-XN-OrL"/>
+                            <constraint firstItem="6hs-qR-Ixz" firstAttribute="top" secondItem="Boi-T4-1T7" secondAttribute="bottom" constant="38" id="UZx-ZG-raB"/>
                             <constraint firstItem="ayj-PB-ApI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Un6-5R-s3J"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="centerX" secondItem="6hs-qR-Ixz" secondAttribute="centerX" id="XIL-Sc-vaJ"/>
+                            <constraint firstItem="AJp-Go-2bK" firstAttribute="leading" secondItem="6hs-qR-Ixz" secondAttribute="leading" id="bhC-XJ-kV2"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="bqT-k3-nlX"/>
                             <constraint firstItem="aKX-t4-avg" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="hiG-Tv-66A"/>
-                            <constraint firstItem="gdG-bC-otg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kCn-i3-cAg"/>
-                            <constraint firstItem="gdG-bC-otg" firstAttribute="trailing" secondItem="ayj-PB-ApI" secondAttribute="trailing" id="phF-zo-Yzi"/>
+                            <constraint firstItem="AJp-Go-2bK" firstAttribute="trailing" secondItem="6hs-qR-Ixz" secondAttribute="trailing" id="jC5-d9-NOA"/>
+                            <constraint firstAttribute="bottom" secondItem="AJp-Go-2bK" secondAttribute="bottom" constant="82" id="jqW-y2-lC4"/>
+                            <constraint firstItem="6hs-qR-Ixz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="p8j-3y-FMo"/>
+                            <constraint firstItem="Boi-T4-1T7" firstAttribute="top" secondItem="aKX-t4-avg" secondAttribute="top" id="pPu-Du-ud8"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="bottomTextField" destination="AJp-Go-2bK" id="nCv-Gg-7Uv"/>
                         <outlet property="cameraButton" destination="TfK-2z-5sE" id="kgO-gk-6yR"/>
                         <outlet property="imageView" destination="aKX-t4-avg" id="iAk-6f-taE"/>
+                        <outlet property="topTextField" destination="6hs-qR-Ixz" id="Oy8-5h-0Hw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
