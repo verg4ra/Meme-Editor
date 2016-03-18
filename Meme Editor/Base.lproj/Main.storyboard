@@ -21,7 +21,11 @@
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4N4-ar-D2h"/>
-                                    <barButtonItem title="Camera" id="TfK-2z-5sE"/>
+                                    <barButtonItem title="Camera" id="TfK-2z-5sE">
+                                        <connections>
+                                            <action selector="displayCamera" destination="BYZ-38-t0r" id="447-5C-Iaw"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="i8t-ry-nvg"/>
                                     <barButtonItem title="Album" id="bOx-QP-Eeb">
                                         <connections>

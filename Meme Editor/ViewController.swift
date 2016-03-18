@@ -14,5 +14,11 @@ class ViewController: UIViewController {
         let pickerController = UIImagePickerController()
         self.presentViewController(pickerController, animated: true, completion: nil)
     }
+    
+    @IBAction func displayCamera() {
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = .Camera
+        self.presentViewController(pickerController, animated: true, completion: nil)
+    }
 }
 
