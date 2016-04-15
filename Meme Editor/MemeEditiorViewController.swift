@@ -29,10 +29,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     let defaultTextTop = "TOP"
     let defaultTextBottom = "BOTTOM"
     
-    var meme: Meme!
-    
     
     // Override Methods
+    
+    override func viewDidLoad() {
+        topTextField.text = defaultTextTop
+        bottomTextField.text = defaultTextBottom
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,10 +47,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         setTextAttributesFor(topTextField)
         setTextAttributesFor(bottomTextField)
-        
-        topTextField.text = defaultTextTop
-        bottomTextField.text = defaultTextBottom
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -60,6 +59,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return true
     }
     
+    @IBAction func dismissMemeEditor(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     // Text Field Functions
     
@@ -194,8 +196,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func save() {
-        meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
+        // TODO: Erase
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
-    
 }
 
