@@ -28,7 +28,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // Properties
     let defaultTextTop = "TOP"
     let defaultTextBottom = "BOTTOM"
-    
+
+    @IBAction func dismissMemeEditor(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     // Override Methods
     
@@ -57,10 +60,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    @IBAction func dismissMemeEditor(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Text Field Functions
@@ -197,14 +196,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imageView.image!, memedImage: generateMemedImage())
-        // TODO: Erase
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
 }
